@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customObject>true</customObject>
+    <description>An individual crisis that the company is planning for or currently impacted by.</description>
+    <motif>Custom9: Lightning</motif>
+</CustomTab>

@@ -1,0 +1,61 @@
+<aura:component
+    controller="IDReader_Controller"
+    extends="EinsteinPlatformCard"
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:availableForFlowScreens"
+    access="global">
+
+    <!-- Design attributes -->
+    <aura:attribute name="title" type="string" default="Identification Reader" access="global"/>
+    <aura:attribute name="modelId" type="String" access="global"/>
+    <aura:attribute name="ocrModelId" type="String" default="OCRModel" access="global"/>
+
+    <!-- Image displayed in polaroid box-->
+    <!-- DO NOT use default to set background image
+    default="{!$Resource.einstein_images + '/einstein_images/EinsteinVIsionDefault.png'}"/>  -->
+    <aura:attribute name="pictureSrc" type="String" />
+    <aura:attribute name="identifiedStateDL" type="String" />
+    <!-- Id of current user.  Used to attach picture. -->
+    <aura:attribute name="userId" type="String" />
+
+    <aura:attribute name="rawPredictions" type="String" />
+
+    <!-- Used for data table display -->
+    <aura:attribute name="idResult" type="IDResult" />
+
+
+    <!-- <ltng:require scripts="{! $Resource.resize }" afterScriptsLoaded="{!c.loadResizeListener}" />  -->
+    <ltng:require scripts="{! $Resource.resize }" />
+    <ltng:require scripts="{! $Resource.lodash }" />
+
+    <!-- event handlers -->
+    <aura:handler name="init" value="{! this }" action="{! c.init }" />
+    <aura:registerEvent name="IDScanned" type="c:IDScanned"/>
+
+    <!-- Visual Content -->
+    <div class="einstein">
+        <center>
+            <lightning:fileUpload
+                name="fileUploader"   
+                label= "Upload a new file" 
+                multiple="false" 
+                accept=".jpg, .png, .jpeg"
+                recordId="{!v.userId}"
+                onuploadfinished="{! c.handleUploadFinished }"/>
+                
+            <p />
+
+            <div aura:id="image-container" class="image-container">
+                <div aura:id="polaroid" class="einstein-drop polaroid" ondragover="{!c.onDragOver}" ondrop="{!c.onDrop}">
+                    <img aura:id="imgItself" id="imgItself" src="{!v.pictureSrc}" alt="Drivers License Reader" class="picture" />
+                    <div aura:id="imgContainer" class="after"> </div>
+                </div>
+            </div>
+
+            <aura:if isTrue="{!v.identifiedStateDL}">
+                <p />
+                <div>ID has been determined to be: </div>
+                <div><b>{!v.identifiedStateDL}</b></div>
+            </aura:if>
+        </center>
+    </div>
+</aura:component>

@@ -1,0 +1,40 @@
+<aura:component
+	controller="IDReader_Controller"
+	extends="EinsteinPlatformCard"
+	implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:availableForFlowScreens"
+	access="global">
+
+	<!-- Design attributes -->
+	<aura:attribute name="title" type="string" default="New Test Subject" access="global"/>
+
+	<aura:attribute name="contentVersionId" type="string"/>
+
+	<!-- event handlers -->
+	<aura:handler name="init" value="{! this }" action="{! c.init }" />
+	<aura:handler event="c:IDScanned" action="{!c.handleIDScannedEvent}"/>
+	<lightning:navigation aura:id="navService"/>
+
+	<lightning:card 
+		iconName="standard:contact"
+		title="New Patient Data">
+
+		<lightning:recordEditForm 
+			aura:id="newContactForm"
+			objectApiName="Contact" 
+			onsubmit="{!c.handleOnSubmit}"
+			onsuccess="{!c.handleOnSuccess}">
+			<lightning:messages />
+			<lightning:inputField aura:id="firstName" fieldName="FirstName" />
+			<lightning:inputField aura:id="lastName" fieldName="LastName" />
+			<lightning:inputField aura:id="dob" fieldName="Birthdate" />
+			<lightning:inputField aura:id="mailingStreet" fieldName="MailingStreet" />
+			<lightning:inputField aura:id="mailingCity" fieldName="MailingCity" />
+			<lightning:inputField aura:id="mailingState" fieldName="MailingState" />
+			<lightning:inputField aura:id="mailingPostalCode" fieldName="MailingPostalCode" />
+			<lightning:inputField aura:id="organDonor" fieldName="OrganDonor__c" />
+
+			<lightning:button variant="brand" type="submit" name="save" label="Save Contact" />
+		</lightning:recordEditForm>
+	</lightning:card>
+
+</aura:component>

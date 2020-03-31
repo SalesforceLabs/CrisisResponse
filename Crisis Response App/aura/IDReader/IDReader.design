@@ -1,0 +1,15 @@
+<design:component label="Identification Reader">
+
+    <design:attribute
+        name="title"
+        label="Title"
+        description="Appears at the top of the component"
+        default="Identification Reader"
+    />
+
+    <design:supportedFormFactors>
+        <design:supportedFormFactor type="Large" />
+        <design:supportedFormFactor type="Small" />
+    </design:supportedFormFactors>
+
+</design:component>

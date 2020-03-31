@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="Fired when an ID image has been uploaded and scanned">
+	<aura:attribute name="idResult" type="IDResult" />
+</aura:event>

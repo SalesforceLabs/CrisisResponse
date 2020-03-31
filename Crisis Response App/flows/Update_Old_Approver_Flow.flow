@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <decisions>
+        <name>Executive_Approver_Decision</name>
+        <label>Executive Approver</label>
+        <locationX>403</locationX>
+        <locationY>775</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Executive_Approver</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_New_Approval_Record.Approver_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Executive Approver</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Old_Executive_Approver</targetReference>
+            </connector>
+            <label>Executive Approver</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>General_Requests_Decision</name>
+        <label>General Requests</label>
+        <locationX>405</locationX>
+        <locationY>595</locationY>
+        <defaultConnector>
+            <targetReference>Executive_Approver_Decision</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>General_Requests</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_New_Approval_Record.Approver_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>General Requests</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Old_General_Approver</targetReference>
+            </connector>
+            <label>General Requests</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>New_Exec_Approval_Record_0_0</name>
+        <label>First Exec Approval Record?</label>
+        <locationX>859</locationX>
+        <locationY>783</locationY>
+        <defaultConnector>
+            <targetReference>Inactivate_Exec_Approver</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Replacing Record</defaultConnectorLabel>
+        <rules>
+            <name>New_0_0_0_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Old_Executive_Approver.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_New_Approval_Record.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <label>First Record</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>New_General_Approval_Record_0</name>
+        <label>First General Approval Record?</label>
+        <locationX>856</locationX>
+        <locationY>592</locationY>
+        <defaultConnector>
+            <targetReference>Inactivate_General_Approver</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Replacing Record</defaultConnectorLabel>
+        <rules>
+            <name>New_0_0_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Old_General_Approver.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_New_Approval_Record.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <label>First Record</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>New_Remote_Approval_Record</name>
+        <label>First Remote Approval Record?</label>
+        <locationX>853</locationX>
+        <locationY>401</locationY>
+        <defaultConnector>
+            <targetReference>Inactivate_Remote_Approver</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Replacing Record</defaultConnectorLabel>
+        <rules>
+            <name>New_0_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Old_Remote_Approver.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_New_Approval_Record.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <label>First Record</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>New_Tech_Approval_Record</name>
+        <label>First Tech Approval Record?</label>
+        <locationX>842</locationX>
+        <locationY>222</locationY>
+        <defaultConnector>
+            <targetReference>Inactivate_Technology_Approver</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Replacing Record</defaultConnectorLabel>
+        <rules>
+            <name>New_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Old_Technology_Approver.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_New_Approval_Record.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <label>First Record</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>New_Travel_Approval_Record</name>
+        <label>First Travel Approval Record?</label>
+        <locationX>845</locationX>
+        <locationY>54</locationY>
+        <defaultConnector>
+            <targetReference>Inactive_Travel_Approver</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Replacing Record</defaultConnectorLabel>
+        <rules>
+            <name>New</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Old_Travel_Approver.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_New_Approval_Record.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <label>First Record</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Technology_Request_Decision</name>
+        <label>Technology Request?</label>
+        <locationX>404</locationX>
+        <locationY>218</locationY>
+        <defaultConnector>
+            <targetReference>Work_Remote_Requests_Decision</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Technology_Request</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_New_Approval_Record.Approver_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Technology Requests</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Old_Technology_Approver</targetReference>
+            </connector>
+            <label>Technology Request</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Travel_Request_Decision</name>
+        <label>Travel Request?</label>
+        <locationX>405</locationX>
+        <locationY>53</locationY>
+        <defaultConnector>
+            <targetReference>Technology_Request_Decision</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Travel_Request</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_New_Approval_Record.Approver_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Travel Approvals</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Old_Travel_Approver</targetReference>
+            </connector>
+            <label>Travel Request</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Work_Remote_Requests_Decision</name>
+        <label>Work Remote Requests</label>
+        <locationX>404</locationX>
+        <locationY>397</locationY>
+        <defaultConnector>
+            <targetReference>General_Requests_Decision</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Work_Remote_Request</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_New_Approval_Record.Approver_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Remote Working Requests</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Old_Remote_Approver</targetReference>
+            </connector>
+            <label>Work Remote Request</label>
+        </rules>
+    </decisions>
+    <interviewLabel>Update Old Approver Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <isTemplate>true</isTemplate>
+    <label>Update Old Approver Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_New_Approval_Record</name>
+        <label>Get New Approval Record</label>
+        <locationX>217</locationX>
+        <locationY>50</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Travel_Request_Decision</targetReference>
+        </connector>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Request_Approvers__c</object>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Old_Executive_Approver</name>
+        <label>Get Old Executive Approver</label>
+        <locationX>693</locationX>
+        <locationY>781</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>New_Exec_Approval_Record_0_0</targetReference>
+        </connector>
+        <filters>
+            <field>Approver_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Executive Approver</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Request_Approvers__c</object>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Old_General_Approver</name>
+        <label>Get Old General Approver</label>
+        <locationX>692</locationX>
+        <locationY>589</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>New_General_Approval_Record_0</targetReference>
+        </connector>
+        <filters>
+            <field>Approver_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>General Requests</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Request_Approvers__c</object>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Old_Remote_Approver</name>
+        <label>Get Old Remote Approver</label>
+        <locationX>684</locationX>
+        <locationY>400</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>New_Remote_Approval_Record</targetReference>
+        </connector>
+        <filters>
+            <field>Approver_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Remote Working Requests</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Request_Approvers__c</object>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Old_Technology_Approver</name>
+        <label>Get Old Technology Approver</label>
+        <locationX>682</locationX>
+        <locationY>219</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>New_Tech_Approval_Record</targetReference>
+        </connector>
+        <filters>
+            <field>Approver_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Technology Requests</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Request_Approvers__c</object>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Old_Travel_Approver</name>
+        <label>Get Old Travel Approver</label>
+        <locationX>682</locationX>
+        <locationY>53</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>New_Travel_Approval_Record</targetReference>
+        </connector>
+        <filters>
+            <field>Approver_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Travel Approvals</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Request_Approvers__c</object>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Inactivate_Exec_Approver</name>
+        <label>Inactivate Exec Approver</label>
+        <locationX>1080</locationX>
+        <locationY>780</locationY>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Old_Executive_Approver.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Approver_Type__c</field>
+            <value>
+                <stringValue>Inactive</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Request_Approvers__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Inactivate_General_Approver</name>
+        <label>Inactivate General Approver</label>
+        <locationX>1077</locationX>
+        <locationY>590</locationY>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Old_General_Approver.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Approver_Type__c</field>
+            <value>
+                <stringValue>Inactive</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Request_Approvers__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Inactivate_Remote_Approver</name>
+        <label>Inactivate Remote Approver</label>
+        <locationX>1076</locationX>
+        <locationY>400</locationY>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Old_Remote_Approver.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Approver_Type__c</field>
+            <value>
+                <stringValue>Inactive</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Request_Approvers__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Inactivate_Technology_Approver</name>
+        <label>Inactivate Technology Approver</label>
+        <locationX>1065</locationX>
+        <locationY>219</locationY>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Old_Technology_Approver.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Approver_Type__c</field>
+            <value>
+                <stringValue>Inactive</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Request_Approvers__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Inactive_Travel_Approver</name>
+        <label>Inactivate Travel Approver</label>
+        <locationX>1063</locationX>
+        <locationY>53</locationY>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Old_Travel_Approver.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Approver_Type__c</field>
+            <value>
+                <stringValue>Inactive</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Request_Approvers__c</object>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Get_New_Approval_Record</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+</Flow>

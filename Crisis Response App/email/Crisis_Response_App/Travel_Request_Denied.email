@@ -1,0 +1,17 @@
+Your travel request has been denied. 
+
+Trip: {!Employee_Request__c.To_From_Cities__c}
+
+Start Date: {!Employee_Request__c.Start_Date__c}
+
+End Date: {!Employee_Request__c.End_Date__c}
+
+Airfare Amount: {!Employee_Request__c.Airfare_Amount__c}
+
+Hotel Amount: {!Employee_Request__c.Hotel_Amount__c}
+
+Other Amount: {!Employee_Request__c.Other_Amount__c}
+
+Approver: {!Employee_Request__c.Approver__c}
+
+Approval Comments: {!ApprovalRequest.Comments}

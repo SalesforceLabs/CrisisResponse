@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customObject>true</customObject>
+    <description>A place to collaborate around a plan to keep the business running during a crisis.</description>
+    <motif>Custom47: Chess piece</motif>
+</CustomTab>

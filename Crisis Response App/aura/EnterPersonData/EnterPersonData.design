@@ -1,0 +1,8 @@
+<design:component label="Enter Patient Data">
+	<design:attribute
+	name="title"
+	label="Title"
+	description="Appears at the top of the component"
+	default="Check in"
+	/>	
+</design:component>

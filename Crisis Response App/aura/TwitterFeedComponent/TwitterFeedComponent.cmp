@@ -1,0 +1,30 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <!-- Attribute for Twitter Handle-->
+    <aura:attribute name="twitterHandle" type="string" default="Salesforce" access="global"/>
+    
+    <!--  Attribute for component height -->
+    <aura:attribute name="height" type="Integer" default="400" access="global"/>
+    
+    <!-- Lighnting Data Service Attributes -->
+    <aura:attribute name="record" type="Object"/>
+    <aura:attribute name="simpleRecord" type="Object"/>
+    <aura:attribute name="error" type="String"/>
+    
+    <!-- Lighnting Data Service to get record data -->
+    <force:recordData aura:id="RecordDetails"
+                      recordId="{!v.recordId}"
+                      layoutType="COMPACT"
+                      fields="Id,Twitter_Handle__c"
+                      mode="VIEW"
+                      targetRecord="{!v.record}"
+                      targetFields="{!v.simpleRecord}"
+                      targetError="{!v.error}"
+                      recordUpdated="{!c.handleRecordUpdated}" />
+    
+    <article class="slds-card">
+        <div class="slds-media__body cardStyling">
+            <iframe src="{!'https://empcrisisresponse-developer-edition.na111.force.com/twitterFeed?twitterHandle='+v.twitterHandle}" width="100%" height="{! v.height+'px'}" frameBorder="0"/>
+            
+        </div>
+    </article>
+</aura:component>

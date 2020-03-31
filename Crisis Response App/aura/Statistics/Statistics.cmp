@@ -1,0 +1,10 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="URL" type="string" access="global"/>
+    <!--  Attribute for component height -->
+    <aura:attribute name="height" type="Integer" default="400" access="global"/>
+    <article class="slds-card">
+        <div class="slds-media__body cardStyling">
+            <iframe src="{!v.URL}" width="100%" height="{! v.height+'px'}" frameBorder="0"/>
+        </div>
+    </article>
+</aura:component>

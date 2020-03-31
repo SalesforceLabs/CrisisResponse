@@ -1,0 +1,8 @@
+<design:component label="Office Status">
+    <!-- Design attribute to set the height of the component in the Lightning page -->
+    <design:attribute name="height" label="Height(in pixels)" />
+    <!-- Design attribute to set a default Twitter handle -->
+    <design:attribute name="title" 
+                      label="Component Title"
+                      default="Office Status"/>
+</design:component>

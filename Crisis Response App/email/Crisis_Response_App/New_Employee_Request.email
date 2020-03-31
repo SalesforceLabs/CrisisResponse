@@ -1,0 +1,22 @@
+You have an approval awaiting your review in the Crisis Response App
+
+You can view the full request at: {!Employee_Request__c.Link}
+
+
+-----DETAILS----
+
+Requester: {!Employee_Request__c.Person__c}
+
+Request: {!Employee_Request__c.Name}
+
+Description: {!Employee_Request__c.Description_of_Request__c}
+
+Start Date: {!Employee_Request__c.Start_Date__c}
+
+End Date: {!Employee_Request__c.End_Date__c}
+
+
+
+Requester E-Mail: {!Employee_Request__c.Class_of_Service__c}
+
+Manager E-Mail: {!Employee_Request__c.Manager_EMail_Address_Email__c}

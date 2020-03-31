@@ -1,0 +1,53 @@
+<aura:component controller="CrisisManagementCtrl" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    <aura:attribute name="rec" type="Object" /> 
+    <br></br> 
+    <div>
+            <article class="slds-card Title">
+                <div class="slds-card__header slds-grid">
+                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                        <div class="slds-media__figure">
+                            <span class="slds-icon_container slds-icon-standard-account" title="account">
+                                <lightning:icon iconName="standard:channel_programs" alternativeText="News Alert" title="News Alert" size="large" />
+                                <span class="slds-assistive-text">Company News</span>
+                            </span>
+                        </div>
+                        <h1 class="slds-card__header-title">
+                            <span>Company News</span></h1>
+                    </header>
+                </div>
+            </article>
+               
+    <aura:iteration items="{!v.rec}" var="curr"> 
+        <article class="slds-card">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-account" title="account">
+                            <lightning:icon iconName="standard:announcement" alternativeText="News Alert" title="News Alert" />
+                            <span class="slds-assistive-text">Announcement</span>
+                        </span>
+                    </div>
+                    <h2 class="slds-card__header-title">
+                        <span>{!curr.crisisapp__Headline__c}</span></h2>
+                </header>
+                
+                <span>
+                    <p>{!curr.formattedDate}</p>
+                </span>
+                
+            </div>
+            <div class="slds-media__body cardStyling">
+                <br/> 
+                <lightning:formattedRichText value="{!curr.crisisapp__Description__c}"/>                 
+            </div>
+            <!--<footer class="slds-card__footer">
+                <a class="slds-card__footer-action" href="javascript:void(0);"><pre/>
+                </a>
+            </footer>-->
+        </article>
+        
+    </aura:iteration> 
+    </div>
+
+</aura:component>

@@ -1,0 +1,15 @@
+Your request has been approved! 
+
+
+
+Request: {!Employee_Request__c.Name}
+
+Start Date: {!Employee_Request__c.Start_Date__c}
+
+End Date: {!Employee_Request__c.End_Date__c}
+
+
+
+Approver: {!Employee_Request__c.Approver__c}
+
+Approval Comments: {!ApprovalRequest.Comments}

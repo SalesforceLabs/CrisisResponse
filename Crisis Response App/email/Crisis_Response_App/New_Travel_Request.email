@@ -1,0 +1,25 @@
+You have an approval awaiting your review in the Crisis Response App
+
+You can view the full request at: {!Employee_Request__c.Link}
+
+Requester: {!Employee_Request__c.Person__c}
+
+Dates of Travel: {!Employee_Request__c.Start_Date__c} -  {!Employee_Request__c.End_Date__c}
+
+To/From Cities: {!Employee_Request__c.To_From_Cities__c}
+
+Justification: {!Employee_Request__c.Reason_for_Travel__c}
+
+Reason for Trip: {!Employee_Request__c.Reason_for_Trip__c}
+
+Class: {!Employee_Request__c.Class_of_Service__c}
+
+Airfare Cost: {!Employee_Request__c.Airfare_Amount__c}
+
+Hotel Cost: {!Employee_Request__c.Hotel_Amount__c}
+
+Other Cost: {!Employee_Request__c.Other_Amount__c}
+
+Requester E-Mail: {!Employee_Request__c.Class_of_Service__c}
+
+Manager E-Mail: {!Employee_Request__c.Manager_EMail_Address_Email__c}

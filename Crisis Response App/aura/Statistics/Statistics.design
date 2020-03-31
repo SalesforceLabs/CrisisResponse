@@ -1,0 +1,9 @@
+<design:component label="IFrame Component">
+    <!-- Design attribute to set the height of the component in the Lightning page -->
+    <design:attribute name="height" label="Height(in pixels)" />
+    <!-- Design attribute to set a default Twitter handle -->
+    <design:attribute name="URL" 
+                      label="Website Link"
+                      description="Paste the website link here"
+                      default="https://www.arcgis.com/apps/opsdashboard/index.html#/85320e2ea5424dfaaa75ae62e5c06e61"/>
+</design:component>
